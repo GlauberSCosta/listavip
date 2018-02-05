@@ -6,4 +6,6 @@ import br.com.glaubscosta.listavips.model.Convidado;
 
 public interface ConvidadoRepository extends CrudRepository<Convidado, Long> {
 
+
+	
 }

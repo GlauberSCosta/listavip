@@ -3,27 +3,47 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Insert title here</title>
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 	</head>
 	<body>
 		 <div class="container">
-	        <div id="listaDeConvidados">
-	            <table class="table table-hover">
-	                <thead> 
-	                    <tr>
-	                        <th>Nome</th>
-	                        <th>Email</th>
-	                        <th>Nome</th>
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                		<tr th:each= "convidado : ${convidados}">
-	                        <td><span th:text="${convidado.nome}"></span></td>
-	                        <td><span th:text="${convidado.email}"></span></td>
-	                        <td><span th:text="${convidado.telefone}"></span></td>
-	                    	</tr>
-	                </tbody>    
-	            </table>
-	        </div>
+		 	
+     	 	<div id="listaDeConvidados">
+	          <table class="table table-hover">
+	              <thead> 
+	                  <tr>
+	                      <th>Nome</th>
+	                      <th>Email</th>
+	                      <th>Nome</th>
+	                      <th>Acao</th>
+	                  </tr>
+	              </thead>
+	              <tbody>
+	              		<tr th:each= "convidado : ${convidados}">
+	                      <td><span th:text="${convidado.nome}"></span></td>
+	                      <td><span th:text="${convidado.email}"></span></td>
+	                      <td><span th:text="${convidado.telefone}"></span></td>
+	                      <td><a class="btn btn-danger" th:href="@{/deletar(id=${convidado.id})}" >Excluir</a></td>
+	                  	</tr>
+	              </tbody>    
+	          </table>
+	      </div>
+	      <hr/>
+			<form action="salvar" method="post">
+			    <div class="form-group">
+			        <label for="nome">Nome</label> 
+			        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"/>
+			    </div>
+			    <div class="form-group">
+			        <label for="email">E-mail</label> 
+			        <input type="email" class="form-control" id="email" name="email" placeholder="Email"/>
+			    </div>
+			    <div class="form-group">
+			        <label for="telefone">Telefone</label> 
+			        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone"/>
+			    </div>
+			    <button type="submit" class="btn btn-success">Convidar</button>
+			</form>
 	    </div>
 	</body>
 </html>
